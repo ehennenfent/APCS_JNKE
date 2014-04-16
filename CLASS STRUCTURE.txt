@@ -1,0 +1,20 @@
+Rectangle class:
+ - Has variables xCoord,yCoord,height,width
+ - Has method getX
+ - Has method getY
+ - Has method getHeight
+ - Has method getWidth
+ - Has method move(deltaX,deltaY)
+ - Has method grow(dir,pix)
+
+Snake class:
+ - Has variable direction
+ - Has arraylist Rectangles
+ - Has method move
+ - Has method turn(direction)
+ - Has method getRectangles
+
+Dot Class:
+ - has variables xCoord, yCoord, size
+
+World class:
