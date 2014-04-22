@@ -16,5 +16,7 @@ Snake class:
 
 Dot Class:
  - has variables xCoord, yCoord, size
+ - Has method getX
+ - Has method getY
 
 World class:
