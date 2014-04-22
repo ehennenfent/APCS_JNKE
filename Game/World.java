@@ -45,7 +45,7 @@ public class World {
 				draw(bar);
 			}
 		}
-		draw(new Rectangle());		
+		draw(new Rectangle(39,47));		
 	    Display.update();
 	}
 		
