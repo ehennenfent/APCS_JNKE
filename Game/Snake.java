@@ -9,16 +9,15 @@ class Snake {
 	int pixelIncrements;
 	
 	public Snake(){
-		blocks.add(e)
+		//blocks.add(e)
 	}
-	
 	public void move(){
 		
 	}
 	public void turn(int newDirection){
 		direction = newDirection;
 	}
-	public ArrayList getRectangles(){
+	public ArrayList<Rectangle> getRectangles(){
 		return blocks;
 	}
 	public void changeLength(int increment){
