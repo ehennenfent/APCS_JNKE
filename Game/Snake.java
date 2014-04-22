@@ -1,21 +1,27 @@
 import java.util.ArrayList;
 
 
-class snake {
+class Snake {
 	int direction = 1;
 	int size = 2;
 	ArrayList<Rectangle> blocks;
 	
-	public void move{
+	int pixelIncrements;
+	
+	public Snake(){
+		blocks.add(e)
+	}
+	
+	public void move(){
 		
 	}
 	public void turn(int newDirection){
-		
+		direction = newDirection;
 	}
 	public ArrayList getRectangles(){
-		
+		return blocks;
 	}
-	public void changeLength(){
-	
+	public void changeLength(int increment){
+		size += increment;
 	}
 }
