@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -39,6 +40,56 @@ public class World {
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		while(!Display.isCloseRequested()){
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		while(Keyboard.next()){
+			if (Keyboard.getEventKey() == Keyboard.KEY_W) {
+				if (Keyboard.getEventKeyState()) {
+				try {
+					snakes.get(0).turn(0);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("No Snake");
+				}
+				}
+				else {
+				System.out.println("W Key Released");
+				}
+				}
+			if (Keyboard.getEventKey() == Keyboard.KEY_A) {
+				if (Keyboard.getEventKeyState()) {
+				try {
+					snakes.get(0).turn(3);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("No Snake");
+				}
+				}
+				else {
+				System.out.println("A Key Released");
+				}
+				}
+			if (Keyboard.getEventKey() == Keyboard.KEY_S) {
+				if (Keyboard.getEventKeyState()) {
+				try {
+					snakes.get(0).turn(2);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("No Snake");
+				}
+				}
+				else {
+				System.out.println("S Key Released");
+				}
+				}
+			if (Keyboard.getEventKey() == Keyboard.KEY_D) {
+				if (Keyboard.getEventKeyState()) {
+				try {
+					snakes.get(0).turn(1);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("No Snake");
+				}
+				}
+				else {
+				System.out.println("D Key Released");
+				}
+				}
+			}
 		for (Snake foo : snakes){
 			ArrayList<Rectangle> rectangles = foo.getRectangles();
 			for(Rectangle bar : rectangles){
