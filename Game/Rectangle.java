@@ -1,8 +1,7 @@
 public class Rectangle {
 	int x = 1;
 	int y = 1;
-	int height;
-	int width;
+	int sLength;
 	
 	public Rectangle(){
 	}
@@ -15,10 +14,10 @@ public class Rectangle {
 	
 	public int getY(){return y;}
 	
-	public int getWidth(){return width;}
+	public int getSLength(){return sLength;}
 	
-	public int getHeight(){return height;}
-
+	public void setSLength(int newSide){sLength = newSide;}
+	
 	public Rectangle(int newX, int newY){
 	x = newX;
 	y = newY;
