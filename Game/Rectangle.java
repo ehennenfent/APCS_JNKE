@@ -1,6 +1,6 @@
 public class Rectangle {
-	int xCoord;
-	int yCoord;
+	int xCoord = 0;
+	int yCoord = 0;
 	int height;
 	int width;
 	
@@ -14,4 +14,9 @@ public class Rectangle {
 	public int getWidth(){return width;}
 	
 	public int getHeight(){return height;}
+
+	public Rectangle(int x, int y){
+	xCoord = x;
+	yCoord = y;
+	}
 }
