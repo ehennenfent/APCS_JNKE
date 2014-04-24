@@ -96,6 +96,9 @@ public class World {
 				draw(bar);
 			}
 		}
+		for (Dot bar : dots){
+			draw(bar.getRectangle());
+		}
 		draw(new Rectangle(38,29));		
 	    Display.update();
 	}
