@@ -35,7 +35,7 @@ public class World {
 		
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, 586*dispmultiplier, 0, 586*dispmultiplier, 1, -1);
+		GL11.glOrtho(0, 598*dispmultiplier, 0, 598*dispmultiplier, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		while(!Display.isCloseRequested()){
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
@@ -45,7 +45,7 @@ public class World {
 				draw(bar);
 			}
 		}
-		draw(new Rectangle(39,47));		
+		draw(new Rectangle(38,29));		
 	    Display.update();
 	}
 		
