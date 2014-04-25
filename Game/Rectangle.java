@@ -14,8 +14,10 @@ public class Rectangle {
 	public void changeY(int adjust){y += adjust;}
 	
 	public int getX(){return x;}
+	public void setX(int newX){x = newX;}
 	
 	public int getY(){return y;}
+	public void setY(int newY){y = newY;}
 	
 	public int getSLength(){return sLength;}
 	
