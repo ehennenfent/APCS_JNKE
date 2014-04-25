@@ -5,6 +5,13 @@ class Snake {
 	int dir = 1;
 	int size = 2;
 	ArrayList<Rectangle> blocks;
+	int growCount = 0;
+	boolean isGrowing = false;
+
+	final int UP = 0;
+	final int RIGHT = 1;
+	final int DOWN = 2;
+	final int LEFT = 3;
 	
 	int pixelIncrements;
 	
@@ -19,19 +26,19 @@ class Snake {
 		// lastY is the Y equivalent of lastX
 		int lastY = (blocks.get(0).getY());
 		Rectangle newRect = new Rectangle(lastX, lastY);
-		if(dir == 0){
+		if(dir == UP){
 			newRect.changeY(1);
 		}
-		else if(dir == 1){
+		else if(dir == RIGHT){
 			newRect.changeX(1);
 		}
-		else if(dir == 2){
+		else if(dir == DOWN){
 			newRect.changeY(-1);
 		}
-		else if(dir == 3){
+		else if(dir == LEFT){
 			newRect.changeX(-1);
 		}
-		blocks.add(newRect);
+		blocks.add(0, newRect);
 	}
 	public void turn(int newDirection){
 		dir = newDirection;
@@ -39,7 +46,8 @@ class Snake {
 	public ArrayList<Rectangle> getRectangles(){
 		return blocks;
 	}
-	public void changeLength(int increment){
-		size += increment;
+	public void setGrowth(int growAmount){
+		growCount = growAmount;
+		isGrowing = true;
 	}
 }
