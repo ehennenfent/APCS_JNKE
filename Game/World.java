@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
@@ -65,6 +66,18 @@ public class World {
 				System.out.println("A Key Released");
 				}
 				}
+			if (Keyboard.getEventKey() == Keyboard.KEY_T) {
+				if (Keyboard.getEventKeyState()) {
+				try {
+					snakes.get(0).setGrowth(1);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("No Snake");
+				}
+				}
+				else {
+				System.out.println("T Key Released");
+				}
+				}
 			if (Keyboard.getEventKey() == Keyboard.KEY_S) {
 				if (Keyboard.getEventKeyState()) {
 				try {
@@ -92,14 +105,30 @@ public class World {
 			}
 		for (Snake foo : snakes){
 			ArrayList<Rectangle> rectangles = foo.getRectangles();
+			for(int i = 0; i < dots.size(); i++){
+				Dot baz = dots.get(i);
+				if(rectangles.get(0).getX() == baz.getRectangle().getX() && rectangles.get(0).getY() == baz.getRectangle().getY()){
+					foo.setGrowth(1);
+					dots.remove(baz);
+					int[] q = newRand();
+					dots.add(new Dot(q[0],q[1]));
+					points += 1;
+				}
+			}
 			for(Rectangle bar : rectangles){
 				draw(bar);
 			}
+			foo.move();
+		}
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			System.out.println("Error while Sleeping");
+			e.printStackTrace();
 		}
 		for (Dot bar : dots){
 			draw(bar.getRectangle());
-		}
-		draw(new Rectangle(38,29));		
+		}		
 	    Display.update();
 	}
 		
@@ -137,6 +166,14 @@ public class World {
 		int[] out = {0,0};
 		out[0] = 1+(boxL + buffer)*(xs - 1);
 		out[1] = 1+(boxL + buffer)*(ys - 1);
+		return out;
+	}
+	
+	private int[] newRand(){
+		int[] out = {0,0};
+		Random gen = new Random(System.currentTimeMillis());
+		out[0] = gen.nextInt(48) + 1;
+		out[1] = gen.nextInt(48) + 1;
 		return out;
 	}
 	

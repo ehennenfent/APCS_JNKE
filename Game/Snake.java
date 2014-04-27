@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-class Snake {
+public class Snake {
 	int dir;
 	int size;
-	ArrayList<Rectangle> blocks;
+	ArrayList<Rectangle> blocks = new ArrayList<Rectangle>();
 	int growCount = 0;
 	boolean isAlive = true;
 	
@@ -89,7 +89,7 @@ class Snake {
 		if(checkX > 49 || checkY > 49 || checkX < 1 || checkY < 1){
 			return false;
 		}
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < blocks.size(); i++){
 			Rectangle check2 = blocks.get(i);
 			int checkX2 = check2.getX();
 			int checkY2 = check2.getY();
