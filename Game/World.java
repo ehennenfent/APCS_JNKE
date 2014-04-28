@@ -46,24 +46,20 @@ public class World {
 				if (Keyboard.getEventKeyState()) {
 				try {
 					snakes.get(0).turn(0);
+					break;
 				} catch (IndexOutOfBoundsException e) {
 					System.out.println("No Snake");
 				}
-				}
-				else {
-				System.out.println("W Key Released");
 				}
 				}
 			if (Keyboard.getEventKey() == Keyboard.KEY_A) {
 				if (Keyboard.getEventKeyState()) {
 				try {
 					snakes.get(0).turn(3);
+					break;
 				} catch (IndexOutOfBoundsException e) {
 					System.out.println("No Snake");
 				}
-				}
-				else {
-				System.out.println("A Key Released");
 				}
 				}
 			if (Keyboard.getEventKey() == Keyboard.KEY_T) {
@@ -74,32 +70,25 @@ public class World {
 					System.out.println("No Snake");
 				}
 				}
-				else {
-				System.out.println("T Key Released");
-				}
 				}
 			if (Keyboard.getEventKey() == Keyboard.KEY_S) {
 				if (Keyboard.getEventKeyState()) {
 				try {
 					snakes.get(0).turn(2);
+					break;
 				} catch (IndexOutOfBoundsException e) {
 					System.out.println("No Snake");
 				}
-				}
-				else {
-				System.out.println("S Key Released");
 				}
 				}
 			if (Keyboard.getEventKey() == Keyboard.KEY_D) {
 				if (Keyboard.getEventKeyState()) {
 				try {
 					snakes.get(0).turn(1);
+					break;
 				} catch (IndexOutOfBoundsException e) {
 					System.out.println("No Snake");
 				}
-				}
-				else {
-				System.out.println("D Key Released");
 				}
 				}
 			}
