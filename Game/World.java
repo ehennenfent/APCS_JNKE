@@ -105,6 +105,12 @@ public class World {
 			}
 		for (Snake foo : snakes){
 			ArrayList<Rectangle> rectangles = foo.getRectangles();
+			if(!foo.checkAlive()){
+				for(Rectangle Nicole : foo.getRectangles()){
+					Nicole.setColor(1.0, 0.25, 0.25);
+					Nicole.changeY(-1);
+				}
+			}
 			for(int i = 0; i < dots.size(); i++){
 				Dot baz = dots.get(i);
 				if(rectangles.get(0).getX() == baz.getRectangle().getX() && rectangles.get(0).getY() == baz.getRectangle().getY()){
@@ -139,7 +145,7 @@ public class World {
 	
 	public void draw(Rectangle q){
 		int[] coords = getPix(q.getX(),q.getY());
-		GL11.glColor3f(0.5f,1.0f,0.5f);
+		GL11.glColor3d(q.getR(),q.getG(),q.getB());
 		GL11.glBegin(GL11.GL_QUADS);
 	    	GL11.glVertex2f(coords[0],coords[1]);
 	    	GL11.glVertex2f(coords[0]+boxL,coords[1]);

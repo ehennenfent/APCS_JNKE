@@ -2,9 +2,9 @@ public class Rectangle {
 	int x = 1;
 	int y = 1;
 	int sLength;
-	double coloR = 0.0;
-	double coloG = 0.0;
-	double coloB = 0.0;
+	double coloR = 0.5;
+	double coloG = 1.0;
+	double coloB = 0.5;
 	
 	public Rectangle(){
 	}
