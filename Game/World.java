@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -6,6 +7,11 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.openal.AL;
+import org.newdawn.slick.openal.Audio;
+import org.newdawn.slick.openal.AudioLoader;
+import org.newdawn.slick.openal.SoundStore;
+import org.newdawn.slick.util.ResourceLoader;
 
 
 public class World {
@@ -16,6 +22,9 @@ public class World {
 	int dispmultiplier = 1;
 	int boxL = 10*dispmultiplier;
 	int buffer = 2*dispmultiplier;
+	int difficulty = 1;
+	
+	private Audio wavEffect;
 	
 	public World(){
 		
@@ -41,6 +50,14 @@ public class World {
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		while(!Display.isCloseRequested()){
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		
+		try {
+			wavEffect = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("res/chime.wav"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		while(Keyboard.next()){
 			if (Keyboard.getEventKey() == Keyboard.KEY_W) {
 				if (Keyboard.getEventKeyState()) {
@@ -105,6 +122,7 @@ public class World {
 				if(rectangles.get(0).getX() == baz.getRectangle().getX() && rectangles.get(0).getY() == baz.getRectangle().getY()){
 					foo.setGrowth(1);
 					dots.remove(baz);
+					wavEffect.playAsSoundEffect(1.0f, 1.0f, false);
 					int[] q = newRand();
 					dots.add(new Dot(q[0],q[1]));
 					points += 1;
@@ -116,7 +134,7 @@ public class World {
 			foo.move();
 		}
 		try {
-			Thread.sleep(100);
+			Thread.sleep((int)100/difficulty);
 		} catch (InterruptedException e) {
 			System.out.println("Error while Sleeping");
 			e.printStackTrace();
@@ -125,8 +143,9 @@ public class World {
 			draw(bar.getRectangle());
 		}		
 	    Display.update();
+	    SoundStore.get().poll(0);
 	}
-		
+//		AL.destroy();
 	}
 	
 	
@@ -172,4 +191,7 @@ public class World {
 		return out;
 	}
 	
+	public void changeDifficulty(int level){
+		difficulty = level;
+	}
 }

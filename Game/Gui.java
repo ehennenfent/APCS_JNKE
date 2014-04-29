@@ -2,6 +2,10 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Gui extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Container pane;
 	private JPanel panel;
 	private JLabel welcome;
