@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -17,7 +16,6 @@ import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.util.ResourceLoader;
-
 
 public class World {
 
@@ -143,6 +141,25 @@ public class World {
 				}
 				}
 				}
+			for(Snake s : snakes){
+				if (!s.checkAlive() && Keyboard.getEventKey() == Keyboard.KEY_E){
+					if (Keyboard.getEventKeyState()) {
+						System.exit(0);
+					}
+					}
+				if (!s.checkAlive() && Keyboard.getEventKey() == Keyboard.KEY_R) {
+					if (Keyboard.getEventKeyState()) {
+						snakes.clear();
+						dots.clear();
+						int[] q = newRand();
+						Dot d = new Dot(q[0],q[1]);
+						dots.add(d);
+						Snake g = new Snake();
+						q.add(g);
+						q.start();
+					}
+				}
+			}
 			}
 		for (Snake foo : snakes){
 			ArrayList<Rectangle> rectangles = foo.getRectangles();
