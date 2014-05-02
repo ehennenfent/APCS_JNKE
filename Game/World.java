@@ -149,14 +149,15 @@ public class World {
 					}
 				if (!s.checkAlive() && Keyboard.getEventKey() == Keyboard.KEY_R) {
 					if (Keyboard.getEventKeyState()) {
+						points = 0;
 						snakes.clear();
 						dots.clear();
 						int[] q = newRand();
 						Dot d = new Dot(q[0],q[1]);
 						dots.add(d);
 						Snake g = new Snake();
-						q.add(g);
-						q.start();
+						add(g);
+//						start();
 					}
 				}
 			}
