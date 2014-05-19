@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
@@ -17,6 +18,8 @@ public class ourGui2 {
 		
 		Container GuiContainer1 = new Container();
 		Container GuiContainer2 = new Container();
+		Container GuiContainer3 = new Container();
+		Container GuiContainer4 = new Container();
 		
 		GridBagConstraints cns = new GridBagConstraints();
 		
@@ -30,6 +33,8 @@ public class ourGui2 {
 		
 		GuiContainer1.setLayout(new GridBagLayout());
 		GuiContainer2.setLayout(new GridBagLayout());
+		GuiContainer3.setLayout(new GridBagLayout());
+		GuiContainer4.setLayout(new GridBagLayout());
 		
 		JTextPane TextPane = new JTextPane();
 		TextPane.setEditable(false);
@@ -61,28 +66,86 @@ public class ourGui2 {
         //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField2, cns);
+		
+		cns.gridx = 0;
+		cns.gridy = 0;
+		cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(GuiContainer3, cns);
+		
+		cns.gridx = 1;
+		cns.gridy = 0;
+		cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(GuiContainer4, cns);
 
-		JButton Button = new JButton();
+		JButton Button = new JButton("Button");
 		Button.setName("Button");
 		Button.setContentAreaFilled(true);
 		cns.gridx = 0;
         cns.gridy = 0;
         cns.weightx = 1.0;
-        cns.weighty = 0.5;
+        cns.weighty = 0.25;
         //cns.anchor = GridBagConstraints.WEST;
         cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(Button);
+		GuiContainer3.add(Button, cns);
 		
-		JButton Button2 = new JButton();
+		JButton Button2 = new JButton("Button2");
 		Button2.setName("Button2");
 		Button2.setContentAreaFilled(true);
 		cns.gridx = 1;
         cns.gridy = 0;
         cns.weightx = 1.0;
-        cns.weighty = 0.5;
+        cns.weighty = 0.25;
         //cns.anchor = GridBagConstraints.EAST;
         cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(Button2);
+		GuiContainer3.add(Button2, cns);
+		
+		JButton Button3 = new JButton("Button3");
+		Button3.setName("RadioButton");
+		Button3.setContentAreaFilled(true);
+		cns.gridx = 1;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(Button3, cns);
+		
+		JButton Button4 = new JButton("Button4");
+		Button4.setName("RadioButton");
+		Button4.setContentAreaFilled(true);
+		cns.gridx = 1;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(Button4, cns);
+		
+		JRadioButton RadioButton = new JRadioButton("Radio Button");
+		RadioButton.setName("RadioButton");
+		RadioButton.setContentAreaFilled(true);
+		cns.gridx = 2;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(RadioButton, cns);
+
+		JRadioButton RadioButton2 = new JRadioButton("Radio Button2");
+		RadioButton2.setName("RadioButton");
+		RadioButton2.setContentAreaFilled(true);
+		cns.gridx = 2;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(RadioButton2, cns);
 		
 		cns.gridx = 0;
         cns.gridy = 0;
