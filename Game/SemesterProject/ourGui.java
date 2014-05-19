@@ -1,67 +1,103 @@
 package SemesterProject;
-
+import java.awt.Container;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
 
 public class ourGui {
 
 	public static void main(String[] args) {
-		JFrame theGuiFrame = new JFrame();
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		theGuiFrame.setLayout(new GridLayout(4,2));
-		theGuiFrame.setTitle("Pellow");
-		theGuiFrame.setSize(500, 500);
-		theGuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		theGuiFrame.setVisible(true);
+		JFrame GuiFrame = new JFrame();
 		
-		JButton theButton = new JButton();
-		theButton.setName("Button");
-		theButton.setContentAreaFilled(true);
+		Container GuiContainer1 = new Container();
+		Container GuiContainer2 = new Container();
 		
-		JButton theButton2 = new JButton();
-		theButton2.setName("Button2");
-		theButton2.setContentAreaFilled(true);
+		GridBagConstraints cns = new GridBagConstraints();
 		
-		JTextPane theTextPane = new JTextPane();
-		theTextPane.setEditable(false);
-		theTextPane.setText("Hi Jacob :)");
-		theTextPane.setSize(50, 50);
+		GuiFrame.setLayout(new GridBagLayout());
+		GuiFrame.setTitle("Pellow");
+		GuiFrame.setSize(600, 600);
+		GuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GuiFrame.setVisible(true);
+		GuiFrame.setLocationRelativeTo(null);
+		//GuiFrame.setResizable(false);
 		
-		JTextPane theTextPane2 = new JTextPane();
-		theTextPane2.setEditable(false);
-		theTextPane2.setText("Hi Jacob2 :)");
-		theTextPane2.setSize(50, 50);
+		GuiContainer1.setLayout(new GridBagLayout());
+		GuiContainer2.setLayout(new GridBagLayout());
 		
-		JTextPane theTextPane3 = new JTextPane();
-		theTextPane3.setEditable(false);
-		theTextPane3.setText("Hi Jacob3 :)");
-		theTextPane3.setSize(50, 50);
-				
-		JLabel theLabel = new JLabel("Showing:");
-		theLabel.setSize(20, 20);
-		JTextField theTextField = new JTextField(25);
-		theTextField.setSize(20, 20);
+		JTextPane TextPane = new JTextPane();
+		TextPane.setEditable(false);
+		TextPane.setText("Hi Jacob :)");
+		cns.gridx = 0;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.2;
+        //cns.anchor = GridBagConstraints.NORTH;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer1.add(TextPane, cns);
 		
-		JLabel theLabel2 = new JLabel("Jane Doe:");
-		theLabel2.setSize(50, 25);
-		JTextField theTextField2 = new JTextField(25);
-		theTextField2.setSize(50, 50);
+		JTextPane TextPane2 = new JTextPane();
+		TextPane2.setEditable(false);
+		TextPane2.setText("Hi Jacob2 :)");
+		cns.gridx = 0;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.6;
+        //cns.anchor = GridBagConstraints.CENTER;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer1.add(TextPane2, cns);
 		
-		theGuiFrame.add(theLabel);
-		theGuiFrame.add(theTextPane);
-		theGuiFrame.add(theTextPane2);
-		theGuiFrame.add(theTextPane3);
-		theGuiFrame.add(theLabel2);
-		theGuiFrame.add(theTextField2);
-		theGuiFrame.add(theButton);
-		theGuiFrame.add(theButton2);
+		JTextField TextField2 = new JTextField(25);
+		cns.gridx = 0;
+        cns.gridy = 2;
+        cns.weightx = 1.0;
+        cns.weighty = 0.2;
+        //cns.anchor = GridBagConstraints.SOUTH;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer1.add(TextField2, cns);
+
+		JButton Button = new JButton();
+		Button.setName("Button");
+		Button.setContentAreaFilled(true);
+		cns.gridx = 0;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        //cns.anchor = GridBagConstraints.WEST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(Button);
+		
+		JButton Button2 = new JButton();
+		Button2.setName("Button2");
+		Button2.setContentAreaFilled(true);
+		cns.gridx = 1;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(Button2);
+		
+		cns.gridx = 0;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.7;
+        cns.anchor = GridBagConstraints.NORTH;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiFrame.add(GuiContainer1, cns);
+		cns.gridx = 0;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.3;
+        cns.anchor = GridBagConstraints.SOUTH;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiFrame.add(GuiContainer2, cns);
 		
 		
 	}
