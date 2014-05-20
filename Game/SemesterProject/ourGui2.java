@@ -109,8 +109,8 @@ public class ourGui2{
 		JButton AddButton = new JButton("Add");
 		AddButton.setName("Add Button");
 		AddButton.setContentAreaFilled(true);
-		AddActionListener bHandler = new AddActionListener();
-		AddButton.addActionListener(bHandler);
+		AddActionListener addHandler = new AddActionListener();
+		AddButton.addActionListener(addHandler);
 		cns.gridx = 1;
         cns.gridy = 0;
         cns.weightx = 1.0;
