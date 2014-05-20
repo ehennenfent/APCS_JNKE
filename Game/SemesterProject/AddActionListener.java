@@ -14,7 +14,6 @@ import javax.swing.JTextPane;
 
 public class AddActionListener implements ActionListener {
 
-	@Override
 	public void actionPerformed(ActionEvent e){
 		GridBagConstraints cns = new GridBagConstraints();
 		

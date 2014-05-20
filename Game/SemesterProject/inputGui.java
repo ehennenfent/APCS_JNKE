@@ -33,6 +33,4 @@ public class inputGui {
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField1, cns);
 	}
-	
-	
 }

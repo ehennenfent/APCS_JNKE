@@ -20,7 +20,7 @@ public class ourGui2{
 	private DisGraActionListener disGraHandler;
 	
 	public static void main(String[] args){
-			ourGui2 g = new ourGui2()
+			ourGui2 g = new ourGui2();
 			g.run();
 	}
 	
@@ -96,8 +96,8 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer2.add(GuiContainer4, cns);
 
-		JButton Button = new JButton("Button");
-		Button.setName("Button");
+		JButton Button = new JButton("Display Grades");
+		Button.setName("Display Grades");
 		Button.setContentAreaFilled(true);
 		cns.gridx = 0;
         cns.gridy = 0;
@@ -107,8 +107,8 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer3.add(Button, cns);
 		
-		JButton Button2 = new JButton("Button2");
-		Button2.setName("Button2");
+		JButton Button2 = new JButton("Display Address");
+		Button2.setName("Display Address");
 		Button2.setContentAreaFilled(true);
 		cns.gridx = 1;
         cns.gridy = 0;
@@ -134,6 +134,8 @@ public class ourGui2{
 		JButton DeleteButton = new JButton("Delete");
 		DeleteButton.setName("Delete Button");
 		DeleteButton.setContentAreaFilled(true);
+		delHandler = new DelActionListener();
+		DeleteButton.addActionListener(delHandler);
 		cns.gridx = 1;
         cns.gridy = 1;
         cns.weightx = 1.0;
@@ -142,7 +144,7 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer4.add(DeleteButton, cns);
 		
-		JRadioButton RadioButton = new JRadioButton("Radio Button");
+		JRadioButton RadioButton = new JRadioButton("All");
 		RadioButton.setName("RadioButton");
 		RadioButton.setContentAreaFilled(true);
 		cns.gridx = 2;
@@ -153,7 +155,7 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer4.add(RadioButton, cns);
 
-		JRadioButton RadioButton2 = new JRadioButton("Radio Button2");
+		JRadioButton RadioButton2 = new JRadioButton("Individual");
 		RadioButton2.setName("RadioButton");
 		RadioButton2.setContentAreaFilled(true);
 		cns.gridx = 2;
