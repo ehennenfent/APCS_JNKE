@@ -114,6 +114,12 @@ public class AddActionListener implements ActionListener {
 		GuiContainer1.add(TextField4, cns);
 		
 		JOptionPane.showConfirmDialog(null, GuiContainer1, "Address Input", JOptionPane.OK_CANCEL_OPTION);
+	
+		String street = TextField1.getText();
+		String city = TextField2.getText();
+		String state = TextField3.getText();
+		String zipcode = TextField4.getText();
+		
+		Address2 inputAddress = new Address2(street, city, state, zipcode);
 	}
 }
-
