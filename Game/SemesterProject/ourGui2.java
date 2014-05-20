@@ -2,22 +2,32 @@ package SemesterProject;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-
 public class ourGui2{
 
+	public enum Mode {
+		AllMode, IndMode,
+	}
+	private Mode mode = null;
+
+	private ButtonGroup walterWhite;
+	
 	private ArrayList<Student> data;
 	private AddActionListener addHandler;
-	private DelActionListener delHandler;
-	private DisAddActionListener disAddHandler;
-	private DisGraActionListener disGraHandler;
+	//private DelActionListener delHandler;
+	//private DisAddActionListener disAddHandler;
+	//private DisGraActionListener disGraHandler;
 	
 	public static void main(String[] args){
 			ourGui2 g = new ourGui2();
@@ -26,6 +36,7 @@ public class ourGui2{
 	
 	public ourGui2(){
 		data = new ArrayList<Student>();
+		walterWhite = new ButtonGroup();
 	}
 	
 	public void run(){
@@ -134,8 +145,39 @@ public class ourGui2{
 		JButton DeleteButton = new JButton("Delete");
 		DeleteButton.setName("Delete Button");
 		DeleteButton.setContentAreaFilled(true);
-		delHandler = new DelActionListener();
-		DeleteButton.addActionListener(delHandler);
+        DeleteButton.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+    			GridBagConstraints cns = new GridBagConstraints();
+    			
+    			Container GuiContainer1 = new Container();
+    			GuiContainer1.setLayout(new GridBagLayout());
+    			
+    			JTextPane TextPane2 = new JTextPane();
+    			TextPane2.setEditable(false);
+    			TextPane2.setText("What student would you like to delete?");
+    			cns.gridx = 0;
+    	        cns.gridy = 0;
+    	        cns.weightx = 1;
+    	        cns.weighty = 0.5;
+    	        //cns.anchor = GridBagConstraints.NORTH;
+    	        cns.fill = GridBagConstraints.BOTH;
+    			GuiContainer1.add(TextPane2, cns);
+    			
+    			JTextField TextField1 = new JTextField(25);
+    			cns.gridx = 0;
+    	        cns.gridy = 1;
+    	        cns.weightx = 1;
+    	        cns.weighty = 0.5;
+    	        //cns.anchor = GridBagConstraints.SOUTH;
+    	        cns.fill = GridBagConstraints.BOTH;
+    			GuiContainer1.add(TextField1, cns);
+    			
+    			JOptionPane.showConfirmDialog(null, GuiContainer1, "Delete Student", JOptionPane.OK_CANCEL_OPTION);
+            }
+        }
+        );
 		cns.gridx = 1;
         cns.gridy = 1;
         cns.weightx = 1.0;
@@ -146,7 +188,13 @@ public class ourGui2{
 		
 		JRadioButton RadioButton = new JRadioButton("All");
 		RadioButton.setName("RadioButton");
+		walterWhite.add(RadioButton);
 		RadioButton.setContentAreaFilled(true);
+		RadioButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				mode = Mode.AllMode;
+			}
+		});
 		cns.gridx = 2;
         cns.gridy = 0;
         cns.weightx = 1.0;
@@ -157,7 +205,13 @@ public class ourGui2{
 
 		JRadioButton RadioButton2 = new JRadioButton("Individual");
 		RadioButton2.setName("RadioButton");
+		walterWhite.add(RadioButton2);
 		RadioButton2.setContentAreaFilled(true);
+		RadioButton2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				mode = Mode.IndMode;
+			}
+		});
 		cns.gridx = 2;
         cns.gridy = 1;
         cns.weightx = 1.0;

@@ -2,21 +2,46 @@ package SemesterProject;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+public class ourGui{
 
-public class ourGui {
+	public enum Mode {
+		AllMode, IndMode,
+	}
+	private Mode mode = null;
 
-	public static void main(String[] args) {
+	private ArrayList<Student> data;
+	private AddActionListener addHandler;
+	private DelActionListener delHandler;
+	private DisAddActionListener disAddHandler;
+	private DisGraActionListener disGraHandler;
+	
+	public static void main(String[] args){
+			ourGui2 g = new ourGui2();
+			g.run();
+	}
+	
+	public ourGui(){
+		data = new ArrayList<Student>();
+	}
+	
+	public void run(){
 		JFrame GuiFrame = new JFrame();
 		
 		Container GuiContainer1 = new Container();
 		Container GuiContainer2 = new Container();
+		Container GuiContainer3 = new Container();
+		Container GuiContainer4 = new Container();
 		
 		GridBagConstraints cns = new GridBagConstraints();
 		
@@ -30,6 +55,8 @@ public class ourGui {
 		
 		GuiContainer1.setLayout(new GridBagLayout());
 		GuiContainer2.setLayout(new GridBagLayout());
+		GuiContainer3.setLayout(new GridBagLayout());
+		GuiContainer4.setLayout(new GridBagLayout());
 		
 		JTextPane TextPane = new JTextPane();
 		TextPane.setEditable(false);
@@ -61,28 +88,125 @@ public class ourGui {
         //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField2, cns);
+		
+		cns.gridx = 0;
+		cns.gridy = 0;
+		cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(GuiContainer3, cns);
+		
+		cns.gridx = 1;
+		cns.gridy = 0;
+		cns.weightx = 1.0;
+        cns.weighty = 0.5;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer2.add(GuiContainer4, cns);
 
-		JButton Button = new JButton();
-		Button.setName("Button");
+		JButton Button = new JButton("Display Grades");
+		Button.setName("Display Grades");
 		Button.setContentAreaFilled(true);
 		cns.gridx = 0;
         cns.gridy = 0;
         cns.weightx = 1.0;
-        cns.weighty = 0.5;
+        cns.weighty = 0.25;
         //cns.anchor = GridBagConstraints.WEST;
         cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(Button);
+		GuiContainer3.add(Button, cns);
 		
-		JButton Button2 = new JButton();
-		Button2.setName("Button2");
+		JButton Button2 = new JButton("Display Address");
+		Button2.setName("Display Address");
 		Button2.setContentAreaFilled(true);
 		cns.gridx = 1;
         cns.gridy = 0;
         cns.weightx = 1.0;
-        cns.weighty = 0.5;
+        cns.weighty = 0.25;
         //cns.anchor = GridBagConstraints.EAST;
         cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(Button2);
+		GuiContainer3.add(Button2, cns);
+		
+		JButton AddButton = new JButton("Add");
+		AddButton.setName("Add Button");
+		AddButton.setContentAreaFilled(true);
+		addHandler = new AddActionListener();
+		AddButton.addActionListener(addHandler);
+		cns.gridx = 1;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(AddButton, cns);
+		
+		JButton DeleteButton = new JButton("Delete");
+		DeleteButton.setName("Delete Button");
+		DeleteButton.setContentAreaFilled(true);
+		//delHandler = new DelActionListener();
+		//DeleteButton.addActionListener(delHandler);
+
+        DeleteButton.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+    			GridBagConstraints cns = new GridBagConstraints();
+    			
+    			Container GuiContainer1 = new Container();
+    			GuiContainer1.setLayout(new GridBagLayout());
+    			
+    			JTextPane TextPane2 = new JTextPane();
+    			TextPane2.setEditable(false);
+    			TextPane2.setText("What student would you like to delete?");
+    			cns.gridx = 0;
+    	        cns.gridy = 0;
+    	        cns.weightx = 1;
+    	        cns.weighty = 0.5;
+    	        //cns.anchor = GridBagConstraints.NORTH;
+    	        cns.fill = GridBagConstraints.BOTH;
+    			GuiContainer1.add(TextPane2, cns);
+    			
+    			JTextField TextField1 = new JTextField(25);
+    			cns.gridx = 0;
+    	        cns.gridy = 1;
+    	        cns.weightx = 1;
+    	        cns.weighty = 0.5;
+    	        //cns.anchor = GridBagConstraints.SOUTH;
+    	        cns.fill = GridBagConstraints.BOTH;
+    			GuiContainer1.add(TextField1, cns);
+    			
+    			JOptionPane.showConfirmDialog(null, GuiContainer1, "Delete Student", JOptionPane.OK_CANCEL_OPTION);
+            }
+        }
+        );
+		
+		cns.gridx = 1;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(DeleteButton, cns);
+		
+		JRadioButton RadioButton = new JRadioButton("All");
+		RadioButton.setName("RadioButton");
+		RadioButton.setContentAreaFilled(true);
+		cns.gridx = 2;
+        cns.gridy = 0;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(RadioButton, cns);
+
+		JRadioButton RadioButton2 = new JRadioButton("Individual");
+		RadioButton2.setName("RadioButton");
+		RadioButton2.setContentAreaFilled(true);
+		cns.gridx = 2;
+        cns.gridy = 1;
+        cns.weightx = 1.0;
+        cns.weighty = 0.25;
+        //cns.anchor = GridBagConstraints.EAST;
+        cns.fill = GridBagConstraints.BOTH;
+		GuiContainer4.add(RadioButton2, cns);
 		
 		cns.gridx = 0;
         cns.gridy = 0;
@@ -98,7 +222,5 @@ public class ourGui {
         cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiFrame.add(GuiContainer2, cns);
-		
-		
 	}
 }
