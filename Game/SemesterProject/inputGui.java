@@ -120,7 +120,7 @@ public class inputGui {
 		cns.gridx = 0;
         cns.gridy = 5;
         cns.weightx = 1;
-        cns.weighty = 1;
+        cns.weighty = .1666;
         //cns.anchor = GridBagConstraints.WEST;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(OkayButton, cns);
@@ -131,7 +131,7 @@ public class inputGui {
 		cns.gridx = 1;
         cns.gridy = 5;
         cns.weightx = 1;
-        cns.weighty = 1;
+        cns.weighty = .1666;
         //cns.anchor = GridBagConstraints.WEST;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(CancelButton, cns);
