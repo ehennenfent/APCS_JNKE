@@ -14,9 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 
-public class ourGui2 {
+public class ourGui2{
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		JFrame GuiFrame = new JFrame();
 		
 		Container GuiContainer1 = new Container();

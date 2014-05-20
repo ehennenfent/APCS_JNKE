@@ -12,25 +12,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-public class AddActionListener implements ActionListener{
+public class AddActionListener implements ActionListener {
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		JFrame GuiFrame = new JFrame();
-		
+	public void actionPerformed(ActionEvent e){
 		GridBagConstraints cns = new GridBagConstraints();
-		
-		GuiFrame.setLayout(new GridBagLayout());
-		GuiFrame.setTitle("Address Input");
-		GuiFrame.setSize(500, 200);
-		GuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GuiFrame.setVisible(true);
-		GuiFrame.setLocationRelativeTo(null);
-		//GuiFrame.setResizable(false);
 		
 		Container GuiContainer1 = new Container();
 		GuiContainer1.setLayout(new GridBagLayout());
-		
+		/**
 		JTextPane TextPane = new JTextPane();
 		TextPane.setEditable(false);
 		TextPane.setText("Address:");
@@ -41,7 +31,7 @@ public class AddActionListener implements ActionListener{
         //cns.anchor = GridBagConstraints.NORTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextPane, cns);
-		
+		*/
 		
 		JTextPane TextPane2 = new JTextPane();
 		TextPane2.setEditable(false);
@@ -123,31 +113,7 @@ public class AddActionListener implements ActionListener{
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField4, cns);
 		
-		JButton OkayButton = new JButton();
-		OkayButton.setName("Okay Button");
-		OkayButton.setContentAreaFilled(true);
-		cns.gridx = 0;
-        cns.gridy = 5;
-        cns.weightx = 1;
-        cns.weighty = .1666;
-        //cns.anchor = GridBagConstraints.WEST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(OkayButton, cns);
-		
-		JButton CancelButton = new JButton();
-		CancelButton.setName("Cancel Button");
-		CancelButton.setContentAreaFilled(true);
-		cns.gridx = 1;
-        cns.gridy = 5;
-        cns.weightx = 1;
-        cns.weighty = .1666;
-        //cns.anchor = GridBagConstraints.WEST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(CancelButton, cns);
-		
-		GuiFrame.add(GuiContainer1);
-		
-		JOptionPane.showConfirmDialog(null, GuiFrame, "Address Input", JOptionPane.OK_CANCEL_OPTION);
+		JOptionPane.showConfirmDialog(null, GuiContainer1, "Address Input", JOptionPane.OK_CANCEL_OPTION);
 	}
 }
 
