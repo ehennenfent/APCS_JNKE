@@ -14,6 +14,10 @@ import javax.swing.JTextPane;
 public class ourGui2{
 
 	private ArrayList<Student> data;
+	private AddActionListener addHandler;
+	private DelActionListener delHandler;
+	private DisAddActionListener disAddHandler;
+	private DisGraActionListener disGraHandler;
 	
 	public static void main(String[] args){
 			ourGui2 g = new ourGui2()
@@ -117,7 +121,7 @@ public class ourGui2{
 		JButton AddButton = new JButton("Add");
 		AddButton.setName("Add Button");
 		AddButton.setContentAreaFilled(true);
-		AddActionListener addHandler = new AddActionListener();
+		addHandler = new AddActionListener();
 		AddButton.addActionListener(addHandler);
 		cns.gridx = 1;
         cns.gridy = 0;
