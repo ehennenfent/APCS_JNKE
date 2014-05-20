@@ -2,13 +2,10 @@ package SemesterProject;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -16,7 +13,18 @@ import javax.swing.JTextPane;
 
 public class ourGui2{
 
+	private ArrayList<Student> data;
+	
 	public static void main(String[] args){
+			ourGui2 g = new ourGui2()
+			g.run();
+	}
+	
+	public ourGui2(){
+		data = new ArrayList<Student>();
+	}
+	
+	public void run(){
 		JFrame GuiFrame = new JFrame();
 		
 		Container GuiContainer1 = new Container();
@@ -165,6 +173,6 @@ public class ourGui2{
         cns.weighty = 0.3;
         cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
-		GuiFrame.add(GuiContainer2, cns);	
+		GuiFrame.add(GuiContainer2, cns);
 	}
 }
