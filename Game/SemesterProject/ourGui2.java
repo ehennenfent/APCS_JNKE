@@ -23,11 +23,18 @@ public class ourGui2{
 
 	private ButtonGroup walterWhite;
 	
+	private JTextPane showName;
+	private JTextPane showData;
+	private JButton disAddB;
+	private JButton disGraB;
+	private JButton addB;
+	private JButton delB;
+	private JRadioButton allB;
+	private JRadioButton indB;
+	
+	private GridBagConstraints cns;
+	
 	private ArrayList<Student> data;
-	private AddActionListener addHandler;
-	//private DelActionListener delHandler;
-	//private DisAddActionListener disAddHandler;
-	//private DisGraActionListener disGraHandler;
 	
 	public static void main(String[] args){
 			ourGui2 g = new ourGui2();
@@ -37,6 +44,68 @@ public class ourGui2{
 	public ourGui2(){
 		data = new ArrayList<Student>();
 		walterWhite = new ButtonGroup();
+		cns = new GridBagConstraints();
+		
+		showName = new JTextPane(); 
+		showName.setText("Showing:"); 
+		showName.setEditable(false);
+		
+		showData = new JTextPane(); 
+		showData.setEditable(false);
+		
+		disAddB = new JButton("Display Address");
+		disAddB.setContentAreaFilled(true);
+		
+		disGraB = new JButton("Display Grades");
+		disGraB.setContentAreaFilled(true);
+		
+		addB = new JButton("Add");
+		addB.setContentAreaFilled(true);
+		
+		delB = new JButton("Del");
+		delB.setContentAreaFilled(true);
+		
+		allB = new JRadioButton("All");
+		allB.setContentAreaFilled(true);
+		
+		indB = new JRadioButton("Individual");
+		indB.setContentAreaFilled(true);
+	}
+	
+	public void addButton(int xCoord, int yCoord, double xWeight, double yWeight, JButton b, Container c){
+		cns.gridx = xCoord;
+        cns.gridy = yCoord;
+        cns.weightx = xWeight;
+        cns.weighty = yWeight;
+        cns.fill = GridBagConstraints.BOTH;
+        c.add(b, cns);
+	}
+	
+	public void addRadioButton(int xCoord, int yCoord, double xWeight, double yWeight, JRadioButton b, Container c){
+		cns.gridx = xCoord;
+        cns.gridy = yCoord;
+        cns.weightx = xWeight;
+        cns.weighty = yWeight;
+        cns.fill = GridBagConstraints.BOTH;
+        c.add(b, cns);
+	}
+	
+	public void addTextPane(int xCoord, int yCoord, double xWeight, double yWeight, JTextPane t, Container c){
+		cns.gridx = xCoord;
+        cns.gridy = yCoord;
+        cns.weightx = xWeight;
+        cns.weighty = yWeight;
+        cns.fill = GridBagConstraints.BOTH;
+        c.add(t, cns);
+	}
+
+	public void addContainer(int xCoord, int yCoord, double xWeight, double yWeight, Container cFrom, Container c){
+		cns.gridx = xCoord;
+        cns.gridy = yCoord;
+        cns.weightx = xWeight;
+        cns.weighty = yWeight;
+        cns.fill = GridBagConstraints.BOTH;
+        c.add(cFrom, cns);
 	}
 	
 	public void run(){
@@ -46,8 +115,6 @@ public class ourGui2{
 		Container GuiContainer2 = new Container();
 		Container GuiContainer3 = new Container();
 		Container GuiContainer4 = new Container();
-		
-		GridBagConstraints cns = new GridBagConstraints();
 		
 		GuiFrame.setLayout(new GridBagLayout());
 		GuiFrame.setTitle("Pellow");
@@ -62,90 +129,30 @@ public class ourGui2{
 		GuiContainer3.setLayout(new GridBagLayout());
 		GuiContainer4.setLayout(new GridBagLayout());
 		
-		JTextPane TextPane = new JTextPane();
-		TextPane.setEditable(false);
-		TextPane.setText("Hi Jacob :)");
-		cns.gridx = 0;
-        cns.gridy = 0;
-        cns.weightx = 1.0;
-        cns.weighty = 0.2;
-        //cns.anchor = GridBagConstraints.NORTH;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(TextPane, cns);
+		// showName TextPane into Container
+		addTextPane(0, 0, 1.0, 0.2, showName, GuiContainer1);
 		
-		JTextPane TextPane2 = new JTextPane();
-		TextPane2.setEditable(false);
-		TextPane2.setText("Hi Jacob2 :)");
-		cns.gridx = 0;
-        cns.gridy = 1;
-        cns.weightx = 1.0;
-        cns.weighty = 0.6;
-        //cns.anchor = GridBagConstraints.CENTER;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(TextPane2, cns);
+		// showData TextPane into Container 1
+		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
 		
-		JTextField TextField2 = new JTextField(25);
-		cns.gridx = 0;
-        cns.gridy = 2;
-        cns.weightx = 1.0;
-        cns.weighty = 0.2;
-        //cns.anchor = GridBagConstraints.SOUTH;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(TextField2, cns);
+		// Container 3 into Container 2
+		addContainer(0, 0, 1.0, 0.5, GuiContainer3, GuiContainer2);
 		
-		cns.gridx = 0;
-		cns.gridy = 0;
-		cns.weightx = 1.0;
-        cns.weighty = 0.5;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(GuiContainer3, cns);
-		
-		cns.gridx = 1;
-		cns.gridy = 0;
-		cns.weightx = 1.0;
-        cns.weighty = 0.5;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer2.add(GuiContainer4, cns);
+		// Container 4 into Container 2
+		addContainer(1, 0, 1.0, 0.5, GuiContainer4, GuiContainer2);
 
-		JButton Button = new JButton("Display Grades");
-		Button.setName("Display Grades");
-		Button.setContentAreaFilled(true);
-		cns.gridx = 0;
-        cns.gridy = 0;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.WEST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer3.add(Button, cns);
-		
-		JButton Button2 = new JButton("Display Address");
-		Button2.setName("Display Address");
-		Button2.setContentAreaFilled(true);
-		cns.gridx = 1;
-        cns.gridy = 0;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.EAST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer3.add(Button2, cns);
-		
-		JButton AddButton = new JButton("Add");
-		AddButton.setName("Add Button");
-		AddButton.setContentAreaFilled(true);
-		addHandler = new AddActionListener();
-		AddButton.addActionListener(addHandler);
-		cns.gridx = 1;
-        cns.gridy = 0;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.EAST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer4.add(AddButton, cns);
-		
-		JButton DeleteButton = new JButton("Delete");
-		DeleteButton.setName("Delete Button");
-		DeleteButton.setContentAreaFilled(true);
-        DeleteButton.addActionListener(new ActionListener() 
+		// disGraB JButton into Container 3
+		addButton(0, 0, 1.0, 0.25, disGraB, GuiContainer3);
+
+		// disAddB JButton into Container 3
+		addButton(1, 0, 1.0, 0.25, disAddB, GuiContainer3);
+
+		// addB JButton into Container 4
+		addButton(1, 0, 1.0, 0.25, addB, GuiContainer4);
+
+		// delB JButton into Container 4
+		addButton(1, 1, 1.0, 0.25, delB, GuiContainer4);
+        delB.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent e) 
             {
@@ -161,7 +168,6 @@ public class ourGui2{
     	        cns.gridy = 0;
     	        cns.weightx = 1;
     	        cns.weighty = 0.5;
-    	        //cns.anchor = GridBagConstraints.NORTH;
     	        cns.fill = GridBagConstraints.BOTH;
     			GuiContainer1.add(TextPane2, cns);
     			
@@ -170,7 +176,6 @@ public class ourGui2{
     	        cns.gridy = 1;
     	        cns.weightx = 1;
     	        cns.weighty = 0.5;
-    	        //cns.anchor = GridBagConstraints.SOUTH;
     	        cns.fill = GridBagConstraints.BOTH;
     			GuiContainer1.add(TextField1, cns);
     			
@@ -178,47 +183,24 @@ public class ourGui2{
             }
         }
         );
-		cns.gridx = 1;
-        cns.gridy = 1;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.EAST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer4.add(DeleteButton, cns);
-		
-		JRadioButton RadioButton = new JRadioButton("All");
-		RadioButton.setName("RadioButton");
-		walterWhite.add(RadioButton);
-		RadioButton.setContentAreaFilled(true);
-		RadioButton.addActionListener(new ActionListener(){
+
+		// allB JRadioButton into Container 4
+		addRadioButton(2, 0, 1.0, 0.25, allB, GuiContainer4);
+		allB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				mode = Mode.AllMode;
 			}
 		});
-		cns.gridx = 2;
-        cns.gridy = 0;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.EAST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer4.add(RadioButton, cns);
+		walterWhite.add(allB);
 
-		JRadioButton RadioButton2 = new JRadioButton("Individual");
-		RadioButton2.setName("RadioButton");
-		walterWhite.add(RadioButton2);
-		RadioButton2.setContentAreaFilled(true);
-		RadioButton2.addActionListener(new ActionListener(){
+		// indB JRadioButton into Container 4
+		addRadioButton(2, 1, 1.0, 0.25, indB, GuiContainer4);
+		indB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				mode = Mode.IndMode;
 			}
 		});
-		cns.gridx = 2;
-        cns.gridy = 1;
-        cns.weightx = 1.0;
-        cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.EAST;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer4.add(RadioButton2, cns);
+		walterWhite.add(indB);
 		
 		cns.gridx = 0;
         cns.gridy = 0;
