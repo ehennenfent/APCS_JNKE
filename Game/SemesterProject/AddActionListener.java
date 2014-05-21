@@ -19,18 +19,6 @@ public class AddActionListener implements ActionListener {
 		
 		Container GuiContainer1 = new Container();
 		GuiContainer1.setLayout(new GridBagLayout());
-		/**
-		JTextPane TextPane = new JTextPane();
-		TextPane.setEditable(false);
-		TextPane.setText("Address:");
-		cns.gridx = 0;
-        cns.gridy = 0;
-        cns.weightx = 1;
-        cns.weighty = .25;
-        //cns.anchor = GridBagConstraints.NORTH;
-        cns.fill = GridBagConstraints.BOTH;
-		GuiContainer1.add(TextPane, cns);
-		*/
 		
 		JTextPane TextPane2 = new JTextPane();
 		TextPane2.setEditable(false);
@@ -39,7 +27,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 1;
         cns.weightx = 0.5;
         cns.weighty = .25;
-        //cns.anchor = GridBagConstraints.NORTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextPane2, cns);
 		
@@ -48,7 +35,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 1;
         cns.weightx = 0.5;
         cns.weighty = .25;
-        //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField1, cns);
 		
@@ -59,7 +45,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 2;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.NORTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextPane3, cns);
 		
@@ -68,7 +53,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 2;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField2, cns);
 		
@@ -79,7 +63,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 3;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.NORTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextPane4, cns);
 		
@@ -88,7 +71,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 3;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField3, cns);
 		
@@ -99,7 +81,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 4;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.NORTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextPane5, cns);
 		
@@ -108,7 +89,6 @@ public class AddActionListener implements ActionListener {
         cns.gridy = 4;
         cns.weightx = 0.5;
         cns.weighty = 0.25;
-        //cns.anchor = GridBagConstraints.SOUTH;
         cns.fill = GridBagConstraints.BOTH;
 		GuiContainer1.add(TextField4, cns);
 		
