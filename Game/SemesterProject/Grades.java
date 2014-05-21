@@ -3,13 +3,13 @@ import java.util.HashMap;
 
 
 public class Grades {
-	private int math;
-	private int history;
-	private int science;
-	private int english;
-	private int wellness;
+	private String math;
+	private String history;
+	private String science;
+	private String english;
+	private String wellness;
 
-	public Grades(int mG, int hG, int sG, int eG, int wG){
+	public Grades(String mG, String hG, String sG, String eG, String wG){
 		math = mG;
 		history = hG;
 		science = sG;
@@ -18,50 +18,50 @@ public class Grades {
 	}
 	
 	public Grades(){
-		math = 65;
-		history = 80;
-		science = 100;
-		english = 90;
-		wellness = 105;
+		math = "65";
+		history = "80";
+		science = "100";
+		english = "90";
+		wellness = "105";
 	}
 	
-	public int getMath(){
+	public String getMath(){
 		return math;
 	}
-	public void setMath(int nM){
+	public void setMath(String nM){
 		math = nM;
 	}
 
-	public int getHistory(){
+	public String getHistory(){
 		return history;
 	}
-	public void setHistory(int nH){
+	public void setHistory(String nH){
 		history = nH;
 	}
 
-	public int getScience(){
+	public String getScience(){
 		return science;
 	}
-	public void setScience(int nS){
+	public void setScience(String nS){
 		science = nS;
 	}
 
-	public int getEnglish(){
+	public String getEnglish(){
 		return english;
 	}
-	public void setEnglish(int nE){
+	public void setEnglish(String nE){
 		english = nE;
 	}
 
-	public int getWellness(){
+	public String getWellness(){
 		return wellness;
 	}
-	public void setWellness(int nW){
+	public void setWellness(String nW){
 		wellness = nW;
 	}
 	
-	public HashMap<String, Integer> getGrades(){
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+	public HashMap<String, String> getGrades(){
+		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("Math", math);
 		map.put("History", history);
 		map.put("Science", science);

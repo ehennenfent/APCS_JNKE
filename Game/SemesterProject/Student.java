@@ -3,10 +3,10 @@ package SemesterProject;
 public class Student {
 
 	private Grades grades;
-	private Address address;
+	private Address2 address;
 	private String firstName;
 	private String lastName;
-	public Student(String fn, String ln, Grades g, Address a){
+	public Student(String fn, String ln, Grades g, Address2 a){
 		firstName = fn;
 		lastName = ln;
 		grades = g;
@@ -17,7 +17,7 @@ public class Student {
 		firstName = "Nicole";
 		lastName = "Aldridge";
 		grades = new Grades();
-		address = new Address();
+		address = new Address2();
 	}
 	
 	public String getName(){
@@ -46,10 +46,10 @@ public class Student {
 		grades = nG;
 	}
 	
-	public Address getAddress(){
+	public Address2 getAddress(){
 		return address;
 	}
-	public void setAddress(Address nA){
+	public void setAddress(Address2 nA){
 		address = nA;
 	}
 }
