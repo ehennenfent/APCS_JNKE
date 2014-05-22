@@ -1,6 +1,7 @@
 package SemesterProject;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -51,7 +52,7 @@ public class ourGui2{
 		showName.setText("Showing:"); 
 		showName.setEditable(false);
 		
-		showData = new JTextPane(); 
+		showData = new JTextPane();
 		showData.setEditable(false);
 		
 		disAddB = new JButton("Display Address");
@@ -135,6 +136,8 @@ public class ourGui2{
 		
 		// showData TextPane into Container 1
 		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
+		Font font = new Font("Courier", Font.PLAIN, 15);
+		showData.setFont(font);
 		
 		// Container 3 into Container 2
 		addContainer(0, 0, 1.0, 0.5, GuiContainer3, GuiContainer2);
@@ -220,7 +223,7 @@ public class ourGui2{
 					}
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Please select \"Add\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Please select \"All\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
