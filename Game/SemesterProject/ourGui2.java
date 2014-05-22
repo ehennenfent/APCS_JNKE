@@ -21,6 +21,10 @@ public class ourGui2{
 	}
 	private Mode mode = null;
 
+	///THIS IS NICOLE'S COMMENT!
+	
+	
+	
 	private ButtonGroup walterWhite;
 	
 	private JTextPane showName;
