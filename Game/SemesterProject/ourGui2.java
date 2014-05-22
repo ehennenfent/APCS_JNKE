@@ -77,7 +77,7 @@ public class ourGui2{
 		indB.setContentAreaFilled(true);
 	}
 	
-	public void addButton(int xCoord, int yCoord, double xWeight, double yWeight, JButton b, Container c){
+	public void addE(int xCoord, int yCoord, double xWeight, double yWeight, JButton b, Container c){
 		cns.gridx = xCoord;
         cns.gridy = yCoord;
         cns.weightx = xWeight;
@@ -86,7 +86,7 @@ public class ourGui2{
         c.add(b, cns);
 	}
 	
-	public void addRadioButton(int xCoord, int yCoord, double xWeight, double yWeight, JRadioButton b, Container c){
+	public void addE(int xCoord, int yCoord, double xWeight, double yWeight, JRadioButton b, Container c){
 		cns.gridx = xCoord;
         cns.gridy = yCoord;
         cns.weightx = xWeight;
@@ -95,7 +95,7 @@ public class ourGui2{
         c.add(b, cns);
 	}
 	
-	public void addTextPane(int xCoord, int yCoord, double xWeight, double yWeight, JTextPane t, Container c){
+	public void addE(int xCoord, int yCoord, double xWeight, double yWeight, JTextPane t, Container c){
 		cns.gridx = xCoord;
         cns.gridy = yCoord;
         cns.weightx = xWeight;
@@ -104,7 +104,16 @@ public class ourGui2{
         c.add(t, cns);
 	}
 	
-	public void addContainer(int xCoord, int yCoord, double xWeight, double yWeight, Container cFrom, Container c){
+	public void addE(int xCoord, int yCoord, double xWeight, double yWeight, JTextField t, Container c){
+		cns.gridx = xCoord;
+        cns.gridy = yCoord;
+        cns.weightx = xWeight;
+        cns.weighty = yWeight;
+        cns.fill = GridBagConstraints.BOTH;
+        c.add(t, cns);
+	}
+	
+	public void addE(int xCoord, int yCoord, double xWeight, double yWeight, Container cFrom, Container c){
 		cns.gridx = xCoord;
         cns.gridy = yCoord;
         cns.weightx = xWeight;
@@ -135,9 +144,9 @@ public class ourGui2{
 		GuiContainer4.setLayout(new GridBagLayout());
 		
 		// showName TextPane into Container
-		addTextPane(0, 0, 1.0, 0.2, showName, GuiContainer1);
+		addE(0, 0, 1.0, 0.2, showName, GuiContainer1);
 		// showData TextPane into Container 1
-		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
+		addE(0, 1, 1.0, .8, showData, GuiContainer1);
 		Font font = new Font("Courier", Font.BOLD, 30);
 		showName.setFont(font);
 		StyledDocument doc = showName.getStyledDocument();
@@ -146,18 +155,18 @@ public class ourGui2{
 		doc.setParagraphAttributes(0, doc.getLength(), center, false);
 
 		// showData TextPane into Container 1
-		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
+		addE(0, 1, 1.0, .8, showData, GuiContainer1);
 		Font font2 = new Font("Courier", Font.PLAIN, 15);
 		showData.setFont(font2);
 		
 		// Container 3 into Container 2
-		addContainer(0, 0, 1.0, 0.5, GuiContainer3, GuiContainer2);
+		addE(0, 0, 1.0, 0.5, GuiContainer3, GuiContainer2);
 		
 		// Container 4 into Container 2
-		addContainer(1, 0, 1.0, 0.5, GuiContainer4, GuiContainer2);
+		addE(1, 0, 1.0, 0.5, GuiContainer4, GuiContainer2);
 
 		// disGraB JButton into Container 3
-		addButton(0, 0, 1.0, 0.25, disGraB, GuiContainer3);
+		addE(0, 0, 1.0, 0.25, disGraB, GuiContainer3);
 		disGraB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -244,7 +253,7 @@ public class ourGui2{
 		});
 
 		// disAddB JButton into Container 3
-		addButton(1, 0, 1.0, 0.25, disAddB, GuiContainer3);
+		addE(1, 0, 1.0, 0.25, disAddB, GuiContainer3);
 		disAddB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -331,7 +340,7 @@ public class ourGui2{
 		});
 
 		// addB JButton into Container 4
-		addButton(1, 0, 1.0, 0.25, addB, GuiContainer4);
+		addE(1, 0, 1.0, 0.25, addB, GuiContainer4);
 		addB.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -383,183 +392,114 @@ public class ourGui2{
 					
 					String inputFname = TextField10.getText();
 					String inputLname = TextField11.getText();
-					
-					Container GuiContainer1 = new Container();
-					GuiContainer1.setLayout(new GridBagLayout());
-					
-					JTextPane TextPane1 = new JTextPane();
-					TextPane1.setEditable(false);
-					TextPane1.setText("Street:                                                     ");
-					cns.gridx = 0;
-			        cns.gridy = 1;
-			        cns.weightx = 0.5;
-			        cns.weighty = .25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextPane1, cns);
-					
-					JTextField TextField1 = new JTextField(25);
-					cns.gridx = 1;
-			        cns.gridy = 1;
-			        cns.weightx = 0.5;
-			        cns.weighty = .25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextField1, cns);
-					
-					JTextPane TextPane2 = new JTextPane();
-					TextPane2.setEditable(false);
-					TextPane2.setText("City:                      ");
-					cns.gridx = 0;
-			        cns.gridy = 2;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextPane2, cns);
-					
-					JTextField TextField2 = new JTextField(25);
-					cns.gridx = 1;
-			        cns.gridy = 2;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextField2, cns);
-					
-					JTextPane TextPane3 = new JTextPane();
-					TextPane3.setEditable(false);
-					TextPane3.setText("State:                     ");
-					cns.gridx = 0;
-			        cns.gridy = 3;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextPane3, cns);
-					
-					JTextField TextField3 = new JTextField(25);
-					cns.gridx = 1;
-			        cns.gridy = 3;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextField3, cns);
-					
-					JTextPane TextPane4 = new JTextPane();
-					TextPane4.setEditable(false);
-					TextPane4.setText("Zipcode:                   ");
-					cns.gridx = 0;
-			        cns.gridy = 4;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextPane4, cns);
-					
-					JTextField TextField4 = new JTextField(25);
-					cns.gridx = 1;
-			        cns.gridy = 4;
-			        cns.weightx = 0.5;
-			        cns.weighty = 0.25;
-			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer1.add(TextField4, cns);
-					
-					int m = JOptionPane.showConfirmDialog(null, GuiContainer1, "Address Input", JOptionPane.OK_CANCEL_OPTION);
-				
-					if(m == JOptionPane.OK_OPTION){
-						String street = TextField1.getText();
-						String city = TextField2.getText();
-						String state = TextField3.getText();
-						String zipcode = TextField4.getText();
-						
-						Address2 inputAddress = new Address2(street, city, state, zipcode);
-						
-						Container GuiContainer2 = new Container();
-						GuiContainer2.setLayout(new GridBagLayout());
-						
-						JTextPane TextPane5 = new JTextPane();
-						TextPane5.setEditable(false);
-						TextPane5.setText("Math:                                                     ");
-						cns.gridx = 0;
-				        cns.gridy = 1;
-				        cns.weightx = 0.5;
-				        cns.weighty = .25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextPane5, cns);
-						
-						JTextField TextField5 = new JTextField(25);
-						cns.gridx = 1;
-				        cns.gridy = 1;
-				        cns.weightx = 0.5;
-				        cns.weighty = .25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextField5, cns);
-						
-						JTextPane TextPane6 = new JTextPane();
-						TextPane6.setEditable(false);
-						TextPane6.setText("History:                      ");
-						cns.gridx = 0;
-				        cns.gridy = 2;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextPane6, cns);
-						
-						JTextField TextField6 = new JTextField(25);
-						cns.gridx = 1;
-				        cns.gridy = 2;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextField6, cns);
-						
-						JTextPane TextPane7 = new JTextPane();
-						TextPane7.setEditable(false);
-						TextPane7.setText("Science                     ");
-						cns.gridx = 0;
-				        cns.gridy = 3;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextPane7, cns);
-						
-						JTextField TextField7 = new JTextField(25);
-						cns.gridx = 1;
-				        cns.gridy = 3;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextField7, cns);
-						
-						JTextPane TextPane8 = new JTextPane();
-						TextPane8.setEditable(false);
-						TextPane8.setText("English:                   ");
-						cns.gridx = 0;
-				        cns.gridy = 4;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextPane8, cns);
-						
-						JTextField TextField8 = new JTextField(25);
-						cns.gridx = 1;
-				        cns.gridy = 4;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextField8, cns);
-						
-						JOptionPane.showConfirmDialog(null, GuiContainer2, "Grades Input", JOptionPane.OK_CANCEL_OPTION);
-						
-						String math = TextField5.getText();
-						String history = TextField6.getText();
-						String english = TextField7.getText();
-						String science = TextField8.getText();
-						
-						Grades inputGrades = new Grades(math, history, english, science);
-						
-						Student inputStudent = new Student(inputFname, inputLname, inputGrades, inputAddress);
-						
-						data.add(inputStudent);
-						
-						JOptionPane.showMessageDialog(null, "Student Added!", "Add Student", JOptionPane.PLAIN_MESSAGE);
+					if((inputFname + " " + inputLname).equals("Nicole Aldridge")){
+						if(mode == Mode.AllMode){
+							for(int i = 0; i < 10; i++){
+								data.add(new Student());
+							}
+						}
+						else if(mode == Mode.IndMode){
+							data.add(new Student());
+						}
 					}
-					else if(m == JOptionPane.CANCEL_OPTION){
+					else{
+						Container GuiContainer1 = new Container();
+						GuiContainer1.setLayout(new GridBagLayout());
+						
+						// Code for displaying and obtaining Street info
+						JTextPane streetP = new JTextPane();
+						streetP.setEditable(false);
+						streetP.setText("Street:                                                     ");
+						addE(0, 1, 0.5, 0.25, streetP, GuiContainer1);
+						JTextField streetF = new JTextField(25);
+						addE(1, 1, 0.5, 0.25, streetF, GuiContainer1);
+						
+						// Code for displaying and obtaining City info
+						JTextPane cityP = new JTextPane();
+						cityP.setEditable(false);
+						cityP.setText("City:                      ");
+						addE(0, 2, 0.5, 0.25, cityP, GuiContainer1);
+						JTextField cityF = new JTextField(25);
+						addE(1, 2, 0.5, 0.25, cityF, GuiContainer1);
+						
+						// Code for displaying and obtaining State info
+						JTextPane stateP = new JTextPane();
+						stateP.setEditable(false);
+						stateP.setText("State:                     ");
+						addE(0, 3, 0.5, 0.25, stateP, GuiContainer1);
+						JTextField stateF = new JTextField(25);
+						addE(1, 3, 0.5, 0.25, stateF, GuiContainer1);
+						
+						// Code for displaying and obtaining ZipCode info
+						JTextPane zipP = new JTextPane();
+						zipP.setEditable(false);
+						zipP.setText("Zipcode:                   ");
+						addE(0, 4, 0.5, 0.25, zipP, GuiContainer1);
+						JTextField zipF = new JTextField(25);
+						addE(1, 4, 0.5, 0.25, zipF, GuiContainer1);
+						
+						int m = JOptionPane.showConfirmDialog(null, GuiContainer1, "Address Input", JOptionPane.OK_CANCEL_OPTION);
+					
+						if(m == JOptionPane.OK_OPTION){
+							String street = streetF.getText();
+							String city = cityF.getText();
+							String state = stateF.getText();
+							String zipcode = zipF.getText();
+							
+							Address2 inputAddress = new Address2(street, city, state, zipcode);
+							
+							Container GuiContainer2 = new Container();
+							GuiContainer2.setLayout(new GridBagLayout());
+							
+							// Code for displaying and obtaining math info
+							JTextPane mathP = new JTextPane();
+							mathP.setEditable(false);
+							mathP.setText("Math:                                                     ");
+							addE(0, 1, 0.5, 0.25, mathP, GuiContainer2);
+							JTextField mathF = new JTextField(25);
+							addE(1, 1, 0.5, 0.25, mathF, GuiContainer2);
+							
+							// Code for displaying and obtaining history info
+							JTextPane historyP = new JTextPane();
+							historyP.setEditable(false);
+							historyP.setText("History:                      ");
+							addE(0, 2, 0.5, 0.25, historyP, GuiContainer2);
+							JTextField historyF = new JTextField(25);
+							addE(1, 2, 0.5, 0.25, historyF, GuiContainer2);
+							
+							// Code for displaying and obtaining science info
+							JTextPane scienceP = new JTextPane();
+							scienceP.setEditable(false);
+							scienceP.setText("Science:                     ");
+							addE(0, 3, 0.5, 0.25, scienceP, GuiContainer2);
+							JTextField scienceF = new JTextField(25);
+							addE(1, 3, 0.5, 0.25, scienceF, GuiContainer2);
+							
+							// Code for displaying and obtaining english info
+							JTextPane englishP = new JTextPane();
+							englishP.setEditable(false);
+							englishP.setText("English:                   ");
+							addE(0, 4, 0.5, 0.25, englishP, GuiContainer2);
+							JTextField englishF = new JTextField(25);
+							addE(1, 4, 0.5, 0.25, englishF, GuiContainer2);
+							
+							JOptionPane.showConfirmDialog(null, GuiContainer2, "Grades Input", JOptionPane.OK_CANCEL_OPTION);
+							
+							String math = mathF.getText();
+							String history = historyF.getText();
+							String english = englishF.getText();
+							String science = scienceF.getText();
+							
+							Grades inputGrades = new Grades(math, history, english, science);
+							
+							Student inputStudent = new Student(inputFname, inputLname, inputGrades, inputAddress);
+							
+							data.add(inputStudent);
+							
+							JOptionPane.showMessageDialog(null, "Student Added!", "Add Student", JOptionPane.PLAIN_MESSAGE);
+						}
+						else if(m == JOptionPane.CANCEL_OPTION){
+						}
 					}
 				}
 				else if(n == JOptionPane.CANCEL_OPTION){
@@ -569,7 +509,7 @@ public class ourGui2{
 		);
 		
 		// delB JButton into Container 4
-		addButton(1, 1, 1.0, 0.25, delB, GuiContainer4);
+		addE(1, 1, 1.0, 0.25, delB, GuiContainer4);
         delB.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent e) 
@@ -639,7 +579,7 @@ public class ourGui2{
         );
 
 		// allB JRadioButton into Container 4
-		addRadioButton(2, 0, 1.0, 0.25, allB, GuiContainer4);
+		addE(2, 0, 1.0, 0.25, allB, GuiContainer4);
 		allB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				mode = Mode.AllMode;
@@ -648,7 +588,7 @@ public class ourGui2{
 		walterWhite.add(allB);
 
 		// indB JRadioButton into Container 4
-		addRadioButton(2, 1, 1.0, 0.25, indB, GuiContainer4);
+		addE(2, 1, 1.0, 0.25, indB, GuiContainer4);
 		indB.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				mode = Mode.IndMode;
