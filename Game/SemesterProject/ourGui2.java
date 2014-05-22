@@ -164,7 +164,11 @@ public class ourGui2{
 				if(mode == Mode.AllMode){
 					showName.setText("Showing: All Grades");
 					String text = "F. Name   L. Name   Math      History   Science   English   " + "\n";
-					for(Student s: data){
+					if(data.size() == 0){
+						JOptionPane.showMessageDialog(null, "No Students In Database", "No Data", JOptionPane.WARNING_MESSAGE);
+					}
+					else{
+						for(Student s: data){
 						String fN = s.getFirstName();
 						String lN = s.getLastName();
 						String ma = s.getGrades().getMath();
@@ -173,6 +177,7 @@ public class ourGui2{
 						String en = s.getGrades().getEnglish();
 						String line = lineFormat(fN, lN, ma, hi, sc, en);
 						text = text.concat(line + "\n");
+						}
 					}
 					showData.setText(text);
 				}
@@ -246,15 +251,20 @@ public class ourGui2{
 				if(mode == Mode.AllMode){
 					showName.setText("Showing: All Grades");
 					String text = "F. Name   L. Name   Street    City      State     Zip Code  " + "\n";
-					for(Student s: data){
-						String fN = s.getFirstName();
-						String lN = s.getLastName();
-						String se = s.getAddress().getStreet();
-						String ct = s.getAddress().getCity();
-						String sa = s.getAddress().getState();
-						String zc = s.getAddress().getZipCode();
-						String line = lineFormat(fN, lN, se, ct, sa, zc);
-						text = text.concat(line + "\n");
+					if(data.size() == 0){
+						JOptionPane.showMessageDialog(null, "No Students In Database", "No Data", JOptionPane.WARNING_MESSAGE);
+					}
+					else{
+						for(Student s: data){
+							String fN = s.getFirstName();
+							String lN = s.getLastName();
+							String se = s.getAddress().getStreet();
+							String ct = s.getAddress().getCity();
+							String sa = s.getAddress().getState();
+							String zc = s.getAddress().getZipCode();
+							String line = lineFormat(fN, lN, se, ct, sa, zc);
+							text = text.concat(line + "\n");
+						}
 					}
 					showData.setText(text);
 				}
@@ -674,7 +684,7 @@ public class ourGui2{
 		for(int i = 0; i < 6; i++){
 			String s = str.get(i);
 			if(s.length() >= 10){
-				s = s.substring(0, 8);
+				s = s.substring(0, 7);
 				s = s.concat("...");
 			}
 			else if(s.length() < 10){
@@ -688,5 +698,4 @@ public class ourGui2{
 		}
 		return line;
 	}
-
 }
