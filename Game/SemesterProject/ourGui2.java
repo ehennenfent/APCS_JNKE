@@ -217,9 +217,15 @@ public class ourGui2{
 					}
 					else if(n == JOptionPane.CANCEL_OPTION){
 					}
+<<<<<<< HEAD
 					else{
 						JOptionPane.showMessageDialog(null, "Please select \"All\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
 					}
+=======
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Please select \"Add\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
+>>>>>>> cd971dd2b07da9dcc2e5802720688d7d129c4cfb
 				}
 			}
 		});
@@ -592,5 +598,5 @@ public class ourGui2{
 		}
 		return line;
 	}
-	//Nicole is nub
+
 }
