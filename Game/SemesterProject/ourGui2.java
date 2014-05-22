@@ -190,7 +190,6 @@ public class ourGui2{
 			        cns.fill = GridBagConstraints.BOTH;
 					GuiContainer1.add(TextField1, cns);
 					
-					
 					int n = JOptionPane.showConfirmDialog(null, GuiContainer1, "Search", JOptionPane.OK_CANCEL_OPTION);
 				
 					if(n == JOptionPane.OK_OPTION){
@@ -220,6 +219,9 @@ public class ourGui2{
 						}
 					}
 					else if(n == JOptionPane.CANCEL_OPTION){
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Please select \"All\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				else{
@@ -522,14 +524,19 @@ public class ourGui2{
 				
 				int i = 0;
 				for(Student s: data){
-					i++;
 					String name = s.getName();
 					if(inputName.equals(name)){
 						data.remove(i);
+						JOptionPane.showMessageDialog(null, "Student Deleted!", "Delete Student Error", JOptionPane.PLAIN_MESSAGE);
+						break;
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Student Not Found!", "Delete Student Error", JOptionPane.ERROR_MESSAGE);
+						}
+					i++;
 				}
 			}
             }
-        }
         );
 
 		// allB JRadioButton into Container 4
