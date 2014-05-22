@@ -20,11 +20,7 @@ public class ourGui2{
 	public enum Mode {
 		AllMode, IndMode,
 	}
-	private Mode mode = null;
-
-	///THIS IS NICOLE'S COMMENT!
-	
-	
+	private Mode mode = null;	
 	
 	private ButtonGroup walterWhite;
 	
@@ -67,7 +63,7 @@ public class ourGui2{
 		addB = new JButton("Add");
 		addB.setContentAreaFilled(true);
 		
-		delB = new JButton("Del");
+		delB = new JButton("Delete");
 		delB.setContentAreaFilled(true);
 		
 		allB = new JRadioButton("All");
@@ -122,7 +118,7 @@ public class ourGui2{
 		Container GuiContainer4 = new Container();
 		
 		GuiFrame.setLayout(new GridBagLayout());
-		GuiFrame.setTitle("Pellow");
+		GuiFrame.setTitle("Student Database");
 		GuiFrame.setSize(600, 600);
 		GuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GuiFrame.setVisible(true);
@@ -279,7 +275,7 @@ public class ourGui2{
 		        cns.fill = GridBagConstraints.BOTH;
 				GuiContainer3.add(TextField11, cns);
 				
-				int n = JOptionPane.showConfirmDialog(null, GuiContainer3, "Student Name Input", JOptionPane.OK_CANCEL_OPTION);
+				int n = JOptionPane.showConfirmDialog(null, GuiContainer3, "What student would you like to add?", JOptionPane.OK_CANCEL_OPTION);
 				
 				if(n == JOptionPane.OK_OPTION){
 					
@@ -446,24 +442,6 @@ public class ourGui2{
 				        cns.fill = GridBagConstraints.BOTH;
 						GuiContainer2.add(TextField8, cns);
 						
-						JTextPane TextPane9 = new JTextPane();
-						TextPane9.setEditable(false);
-						TextPane9.setText("Wellness:                   ");
-						cns.gridx = 0;
-				        cns.gridy = 4;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextPane9, cns);
-						
-						/**JTextField TextField9 = new JTextField(25);
-						cns.gridx = 1;
-				        cns.gridy = 4;
-				        cns.weightx = 0.5;
-				        cns.weighty = 0.25;
-				        cns.fill = GridBagConstraints.BOTH;
-						GuiContainer2.add(TextField9, cns);**/
-						
 						JOptionPane.showConfirmDialog(null, GuiContainer2, "Grades Input", JOptionPane.OK_CANCEL_OPTION);
 						
 						String math = TextField5.getText();
@@ -492,30 +470,61 @@ public class ourGui2{
         {
             public void actionPerformed(ActionEvent e) 
             {
-    			GridBagConstraints cns = new GridBagConstraints();
-    			
-    			Container GuiContainer1 = new Container();
-    			GuiContainer1.setLayout(new GridBagLayout());
-    			
-    			JTextPane TextPane2 = new JTextPane();
-    			TextPane2.setEditable(false);
-    			TextPane2.setText("What student would you like to delete?");
-    			cns.gridx = 0;
-    	        cns.gridy = 0;
-    	        cns.weightx = 1;
-    	        cns.weighty = 0.5;
-    	        cns.fill = GridBagConstraints.BOTH;
-    			GuiContainer1.add(TextPane2, cns);
-    			
-    			JTextField TextField1 = new JTextField(25);
-    			cns.gridx = 0;
-    	        cns.gridy = 1;
-    	        cns.weightx = 1;
-    	        cns.weighty = 0.5;
-    	        cns.fill = GridBagConstraints.BOTH;
-    			GuiContainer1.add(TextField1, cns);
-    			
-    			JOptionPane.showConfirmDialog(null, GuiContainer1, "Delete Student", JOptionPane.OK_CANCEL_OPTION);
+            	GridBagConstraints cns = new GridBagConstraints();
+				
+				Container GuiContainer3 = new Container();
+				GuiContainer3.setLayout(new GridBagLayout());
+				
+				JTextPane TextPane10 = new JTextPane();
+				TextPane10.setEditable(false);
+				TextPane10.setText("Student First Name:                                                     ");
+				cns.gridx = 0;
+		        cns.gridy = 1;
+		        cns.weightx = 0.5;
+		        cns.weighty = .25;
+		        cns.fill = GridBagConstraints.BOTH;
+				GuiContainer3.add(TextPane10, cns);
+				
+				JTextField TextField10 = new JTextField(25);
+				cns.gridx = 1;
+		        cns.gridy = 1;
+		        cns.weightx = 0.5;
+		        cns.weighty = .25;
+		        cns.fill = GridBagConstraints.BOTH;
+				GuiContainer3.add(TextField10, cns);
+				
+				JTextPane TextPane11 = new JTextPane();
+				TextPane11.setEditable(false);
+				TextPane11.setText("Student Last Name:                                                     ");
+				cns.gridx = 0;
+		        cns.gridy = 2;
+		        cns.weightx = 0.5;
+		        cns.weighty = .25;
+		        cns.fill = GridBagConstraints.BOTH;
+				GuiContainer3.add(TextPane11, cns);
+				
+				JTextField TextField11 = new JTextField(25);
+				cns.gridx = 1;
+		        cns.gridy = 2;
+		        cns.weightx = 0.5;
+		        cns.weighty = .25;
+		        cns.fill = GridBagConstraints.BOTH;
+				GuiContainer3.add(TextField11, cns);
+				
+				JOptionPane.showConfirmDialog(null, GuiContainer3, "What student would you like to delete?", JOptionPane.OK_CANCEL_OPTION);
+				
+				String inputFname = TextField10.getText();
+				String inputLname = TextField11.getText();
+				String inputName = inputFname + " " + inputLname;
+				
+				int i = 0;
+				for(Student s: data){
+					i++;
+					String name = s.getName();
+					if(inputName.equals(name)){
+						data.remove(i);
+				}
+			}
             }
         }
         );

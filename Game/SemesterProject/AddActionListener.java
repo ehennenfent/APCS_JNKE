@@ -203,7 +203,7 @@ public class AddActionListener implements ActionListener {
 			String science = TextField8.getText();
 			String wellness = TextField9.getText();
 			
-			Grades inputGrades = new Grades(math, history, english, science, wellness);
+			Grades inputGrades = new Grades(math, history, english, science);
 			
 			Student inputStudent = new Student("", "", inputGrades, inputAddress);
 		}
