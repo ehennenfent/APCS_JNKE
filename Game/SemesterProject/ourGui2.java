@@ -459,6 +459,8 @@ public class ourGui2{
 						Student inputStudent = new Student(inputFname, inputLname, inputGrades, inputAddress);
 						
 						data.add(inputStudent);
+						
+						JOptionPane.showMessageDialog(null, "Student Added!", "Add Student", JOptionPane.PLAIN_MESSAGE);
 					}
 					else if(m == JOptionPane.CANCEL_OPTION){
 					}
@@ -527,7 +529,7 @@ public class ourGui2{
 					String name = s.getName();
 					if(inputName.equals(name)){
 						data.remove(i);
-						JOptionPane.showMessageDialog(null, "Student Deleted!", "Delete Student Error", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Student Deleted!", "Delete Student", JOptionPane.PLAIN_MESSAGE);
 						break;
 					}
 					else{
