@@ -161,7 +161,7 @@ public class ourGui2{
 						String sc = s.getGrades().getScience();
 						String en = s.getGrades().getEnglish();
 						String line = lineFormat(fN, lN, ma, hi, sc, en);
-						text.concat(line + "\n");
+						text = text.concat(line + "\n");
 					}
 					showData.setText(text);
 				}
