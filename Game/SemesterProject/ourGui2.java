@@ -98,7 +98,7 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
         c.add(t, cns);
 	}
-
+	
 	public void addContainer(int xCoord, int yCoord, double xWeight, double yWeight, Container cFrom, Container c){
 		cns.gridx = xCoord;
         cns.gridy = yCoord;

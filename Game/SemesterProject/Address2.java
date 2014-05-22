@@ -1,5 +1,6 @@
 package SemesterProject;
 
+
 public class Address2 {
 
 	private String street;
