@@ -220,19 +220,16 @@ public class ourGui2{
 						else if(studentFound){
 							showName.setText("Showing: " + studentName);
 							String text = "\n";
-							text.concat("First Name:                             " + student.getFirstName() +"\n");
-							text.concat("Last Name:                              " + student.getLastName() +"\n");
-							text.concat("Math:                                   " + student.getGrades().getMath() +"\n");
-							text.concat("History:                                " + student.getGrades().getHistory() +"\n");
-							text.concat("Science:                                " + student.getGrades().getScience() +"\n");
-							text.concat("English:                                " + student.getGrades().getEnglish() +"\n");
+							text = text.concat("First Name:                             " + student.getFirstName() +"\n");
+							text = text.concat("Last Name:                              " + student.getLastName() +"\n");
+							text = text.concat("Math:                                   " + student.getGrades().getMath() +"\n");
+							text = text.concat("History:                                " + student.getGrades().getHistory() +"\n");
+							text = text.concat("Science:                                " + student.getGrades().getScience() +"\n");
+							text = text.concat("English:                                " + student.getGrades().getEnglish() +"\n");
 							showData.setText(text);
 						}
 					}
 					else if(n == JOptionPane.CANCEL_OPTION){
-					}
-					else{
-						JOptionPane.showMessageDialog(null, "Please select \"All\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				else{
@@ -243,6 +240,85 @@ public class ourGui2{
 
 		// disAddB JButton into Container 3
 		addButton(1, 0, 1.0, 0.25, disAddB, GuiContainer3);
+		disAddB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(mode == Mode.AllMode){
+					showName.setText("Showing: All Grades");
+					String text = "F. Name   L. Name   Street    City      State     Zip Code  " + "\n";
+					for(Student s: data){
+						String fN = s.getFirstName();
+						String lN = s.getLastName();
+						String se = s.getAddress().getStreet();
+						String ct = s.getAddress().getCity();
+						String sa = s.getAddress().getState();
+						String zc = s.getAddress().getZipCode();
+						String line = lineFormat(fN, lN, se, ct, sa, zc);
+						text = text.concat(line + "\n");
+					}
+					showData.setText(text);
+				}
+				else if(mode == Mode.IndMode){
+					Student student = new Student();
+					GridBagConstraints cns = new GridBagConstraints();
+					
+					Container GuiContainer1 = new Container();
+					GuiContainer1.setLayout(new GridBagLayout());
+					
+					JTextPane TextPane1 = new JTextPane();
+					TextPane1.setEditable(false);
+					TextPane1.setText("Student Name:                                               ");
+					cns.gridx = 0;
+			        cns.gridy = 1;
+			        cns.weightx = 0.5;
+			        cns.weighty = 0.5;
+			        cns.fill = GridBagConstraints.BOTH;
+					GuiContainer1.add(TextPane1, cns);
+					
+					JTextField TextField1 = new JTextField(25);
+					cns.gridx = 1;
+			        cns.gridy = 1;
+			        cns.weightx = 0.5;
+			        cns.weighty = 0.5;
+			        cns.fill = GridBagConstraints.BOTH;
+					GuiContainer1.add(TextField1, cns);
+					
+					int n = JOptionPane.showConfirmDialog(null, GuiContainer1, "Search", JOptionPane.OK_CANCEL_OPTION);
+				
+					if(n == JOptionPane.OK_OPTION){
+						String studentName = TextField1.getText();
+						boolean studentFound = false;
+						for(Student s: data){
+							String name = s.getName();
+							if(studentName.equals(name)){
+								student = s;
+								studentFound = true;
+								break;
+							}
+						}
+						if(!studentFound){
+							JOptionPane.showMessageDialog(null, studentName + " was not found");
+						}
+						else if(studentFound){
+							showName.setText("Showing: " + studentName);
+							String text = "\n";
+							text = text.concat("First Name:                             " + student.getFirstName() +"\n");
+							text = text.concat("Last Name:                              " + student.getLastName() +"\n");
+							text = text.concat("Street:                                 " + student.getAddress().getStreet() +"\n");
+							text = text.concat("City:                                   " + student.getAddress().getCity() +"\n");
+							text = text.concat("State:                                  " + student.getAddress().getState() +"\n");
+							text = text.concat("Zip Code:                               " + student.getAddress().getZipCode() +"\n");
+							showData.setText(text);
+						}
+					}
+					else if(n == JOptionPane.CANCEL_OPTION){
+					}
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Please select \"All\" or \"Individual\" ", "Select Mode", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 
 		// addB JButton into Container 4
 		addButton(1, 0, 1.0, 0.25, addB, GuiContainer4);
@@ -602,12 +678,13 @@ public class ourGui2{
 				s = s.concat("...");
 			}
 			else if(s.length() < 10){
-				for(int j = 0; j < (10 - s.length()); j++){
+				int length = s.length();
+				for(int j = 0; j < (10 - length); j++){
 					s = s.concat(" ");
 				}
 			}
 			str.set(i, s);
-			line.concat(str.get(i));
+			line = line.concat(str.get(i));
 		}
 		return line;
 	}
