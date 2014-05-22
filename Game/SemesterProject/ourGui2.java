@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 public class ourGui2{
 
@@ -133,11 +136,19 @@ public class ourGui2{
 		
 		// showName TextPane into Container
 		addTextPane(0, 0, 1.0, 0.2, showName, GuiContainer1);
-		
 		// showData TextPane into Container 1
 		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
-		Font font = new Font("Courier", Font.PLAIN, 15);
-		showData.setFont(font);
+		Font font = new Font("Courier", Font.BOLD, 30);
+		showName.setFont(font);
+		StyledDocument doc = showName.getStyledDocument();
+		SimpleAttributeSet center = new SimpleAttributeSet();
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+		doc.setParagraphAttributes(0, doc.getLength(), center, false);
+
+		// showData TextPane into Container 1
+		addTextPane(0, 1, 1.0, .8, showData, GuiContainer1);
+		Font font2 = new Font("Courier", Font.PLAIN, 15);
+		showData.setFont(font2);
 		
 		// Container 3 into Container 2
 		addContainer(0, 0, 1.0, 0.5, GuiContainer3, GuiContainer2);
