@@ -1,4 +1,5 @@
 package SemesterProject;
+
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -147,6 +148,83 @@ public class ourGui2{
 
 		// disGraB JButton into Container 3
 		addButton(0, 0, 1.0, 0.25, disGraB, GuiContainer3);
+		disGraB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(mode == Mode.AllMode){
+					showName.setText("Showing: All Grades");
+					String text = "F. Name   L. Name   Math      History   Science   English   " + "\n";
+					for(Student s: data){
+						String fN = s.getFirstName();
+						String lN = s.getLastName();
+						String ma = s.getGrades().getMath();
+						String hi = s.getGrades().getHistory();
+						String sc = s.getGrades().getScience();
+						String en = s.getGrades().getEnglish();
+						String line = lineFormat(fN, lN, ma, hi, sc, en);
+						text.concat(line + "\n");
+					}
+					showData.setText(text);
+				}
+				else if(mode == Mode.IndMode){
+					Student student = new Student();
+					GridBagConstraints cns = new GridBagConstraints();
+					
+					Container GuiContainer1 = new Container();
+					GuiContainer1.setLayout(new GridBagLayout());
+					
+					JTextPane TextPane1 = new JTextPane();
+					TextPane1.setEditable(false);
+					TextPane1.setText("Student Name:                                               ");
+					cns.gridx = 0;
+			        cns.gridy = 1;
+			        cns.weightx = 0.5;
+			        cns.weighty = 0.5;
+			        cns.fill = GridBagConstraints.BOTH;
+					GuiContainer1.add(TextPane1, cns);
+					
+					JTextField TextField1 = new JTextField(25);
+					cns.gridx = 1;
+			        cns.gridy = 1;
+			        cns.weightx = 0.5;
+			        cns.weighty = 0.5;
+			        cns.fill = GridBagConstraints.BOTH;
+					GuiContainer1.add(TextField1, cns);
+					
+					
+					int n = JOptionPane.showConfirmDialog(null, GuiContainer1, "Search", JOptionPane.OK_CANCEL_OPTION);
+				
+					if(n == JOptionPane.OK_OPTION){
+						String studentName = TextField1.getText();
+						boolean studentFound = false;
+						for(Student s: data){
+							String name = s.getName();
+							if(studentName.equals(name)){
+								student = s;
+								studentFound = true;
+								break;
+							}
+						}
+						if(!studentFound){
+							JOptionPane.showMessageDialog(null, studentName + " was not found");
+						}
+						else if(studentFound){
+							showName.setText("Showing: " + studentName);
+							String text = "\n";
+							text.concat("First Name:                             " + student.getFirstName() +"\n");
+							text.concat("Last Name:                              " + student.getLastName() +"\n");
+							text.concat("Math:                                   " + student.getGrades().getMath() +"\n");
+							text.concat("History:                                " + student.getGrades().getHistory() +"\n");
+							text.concat("Science:                                " + student.getGrades().getScience() +"\n");
+							text.concat("English:                                " + student.getGrades().getEnglish() +"\n");
+							showData.setText(text);
+						}
+					}
+					else if(n == JOptionPane.CANCEL_OPTION){
+					}
+				}
+			}
+		});
 
 		// disAddB JButton into Container 3
 		addButton(1, 0, 1.0, 0.25, disAddB, GuiContainer3);
@@ -329,13 +407,13 @@ public class ourGui2{
 			        cns.fill = GridBagConstraints.BOTH;
 					GuiContainer2.add(TextPane9, cns);
 					
-					JTextField TextField9 = new JTextField(25);
+					/**JTextField TextField9 = new JTextField(25);
 					cns.gridx = 1;
 			        cns.gridy = 4;
 			        cns.weightx = 0.5;
 			        cns.weighty = 0.25;
 			        cns.fill = GridBagConstraints.BOTH;
-					GuiContainer2.add(TextField9, cns);
+					GuiContainer2.add(TextField9, cns);**/
 					
 					JOptionPane.showConfirmDialog(null, GuiContainer2, "Grades Input", JOptionPane.OK_CANCEL_OPTION);
 					
@@ -343,9 +421,8 @@ public class ourGui2{
 					String history = TextField6.getText();
 					String english = TextField7.getText();
 					String science = TextField8.getText();
-					String wellness = TextField9.getText();
 					
-					Grades inputGrades = new Grades(math, history, english, science, wellness);
+					Grades inputGrades = new Grades(math, history, english, science);
 					
 					Student inputStudent = new Student("", "", inputGrades, inputAddress);
 					
@@ -357,7 +434,6 @@ public class ourGui2{
 		}
 		);
 		
-
 		// delB JButton into Container 4
 		addButton(1, 1, 1.0, 0.25, delB, GuiContainer4);
         delB.addActionListener(new ActionListener() 
@@ -425,4 +501,31 @@ public class ourGui2{
         cns.fill = GridBagConstraints.BOTH;
 		GuiFrame.add(GuiContainer2, cns);
 	}
+	
+	public String lineFormat(String fName, String lName, String e1, String e2, String e3, String e4){
+		ArrayList<String> str = new ArrayList<String>();
+		String line = "";
+		str.add(fName);
+		str.add(lName);
+		str.add(e1);
+		str.add(e2);
+		str.add(e3);
+		str.add(e4);
+		for(int i = 0; i < 6; i++){
+			String s = str.get(i);
+			if(s.length() >= 10){
+				s = s.substring(0, 8);
+				s = s.concat("...");
+			}
+			else if(s.length() < 10){
+				for(int j = 0; j < (10 - s.length()); j++){
+					s = s.concat(" ");
+				}
+			}
+			str.set(i, s);
+			line.concat(str.get(i));
+		}
+		return line;
+	}
+	//Nicole is nub
 }
